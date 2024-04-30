@@ -17,16 +17,11 @@ const body = {
     "referrer": "",
     "userRegion":"TH"
 }
-function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
-(async ()=>{
-    while (1) {
-        await axios.post(url, body, {
-            headers: headers,
-        }).then(async (res)=>{
-            console.log(res.data);
-        })
-        await sleep(2000)
-    }
-})();
+
+setInterval(() => {
+    axios.post(url, body, {
+        headers: headers,
+    }).then(async (res)=>{
+        console.log(res.data);
+    })
+}, 2000);
